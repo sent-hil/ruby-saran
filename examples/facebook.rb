@@ -33,7 +33,9 @@ class Facebook
   end
 end
 
-# /me
+# These are the methods the above dsl will generate.
+# Ever get, post, delete accept parameters that will
+# be url encoded and sent to the external api.
 user  = Facebook::User.new(user_id).get
 user.albums.get
 user.apprequests.get
