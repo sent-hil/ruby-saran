@@ -11,6 +11,7 @@ PATH
   remote: .
   specs:
     saran (0.0.1)
+      activesupport (~> 3.1)
       rake (~> 0.9.5)
 
 GEM

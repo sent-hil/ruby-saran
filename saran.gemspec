@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths     = ["lib"]
 
   s.add_dependency 'rake', '~> 0.9.5'
+  s.add_dependency 'activesupport', '~> 3.1'
 
   s.add_development_dependency 'rspec', '~> 2.12'
   s.add_development_dependency 'vcr', '~> 2.3.0'
