@@ -11,7 +11,7 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 end
 
 # getters
@@ -28,7 +28,7 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 
   resources :calendars
 end
@@ -44,11 +44,10 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 
   resources :calendars do
     collection do
-      get  '/calendars' # fails, expects collection of cals
       post '/calendars'
     end
   end
@@ -56,7 +55,6 @@ end
 
 cls = GoogleCalendar::Calendars.new
 cls.post(:params => '')
-cls.get
 ```
 
 #### Member:
@@ -66,12 +64,12 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 
   resources :calendars do
     member do
-      get    '/:id'
       delete '/:id'
+      get    '/:id'
       put    '/:id'
     end
   end
@@ -89,20 +87,19 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 
   resources :calendars do
     member do
-      resources :acls do
+      resources :events do
         collection do
-          post '/acl'
-          get  '/acl'
+          get  '/events'
+          post '/events'
         end
 
         member do
-          get    '/:id'
-          delete '/:id'
-          put    '/:id'
+          delete '/events/:id'
+          get    '/events/:id'
         end
       end
     end
@@ -111,11 +108,11 @@ end
 
 cal  = GoogleCalendar::Calendar.new(cal_id)
 
-# returns [acl, acl, acl]
-acls = cal.acls
-acl  = acls.first
+# returns [event, event, event]
+events = cal.events
+event  = events.first
 
-# acl needs to have `id` param for following to work
-acl.get
-acl.delete
+# event needs to have `id` param for following to work
+event.get
+event.delete
 ```

@@ -4,7 +4,7 @@ class GoogleCalendar
   include Wrappable
 
   endpoint 'https://www.googleapis.com/calendar/v3'
-  provdier :google
+  provider :google
 
   resources :calendar_lists do
     collection do
@@ -33,17 +33,20 @@ class GoogleCalendar
       patch  '/calendars/:id'
 
       resources :events do
+        collection do
+          get  '/events'
+          post '/events'
+          post '/events/quickAdd'
+          post '/events/import'
+        end
+
         member do
           delete '/events/:id'
           get    '/events/:id'
-          post   '/events/import'
-          post   '/events'
-          get    '/events/:id/instances'
-          get    '/events'
-          post   '/events/:id/move'
-          post   '/events/quickAdd'
           put    '/events/:id'
           patch  '/events/:id'
+          get    '/events/:id/instances'
+          post   '/events/:id/move'
         end
       end
 
