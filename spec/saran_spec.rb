@@ -12,16 +12,16 @@ describe Saran do
     end
 
     it 'gets endpoint' do
-      subject.endpoint.should == mock_api_endpoint
+      expect(subject.endpoint).to eq(mock_api_endpoint)
     end
 
     it 'gets default config' do
-      subject.post_type.should == :path
+      expect(subject.post_type).to eq(:path)
     end
 
     it 'sets endpoint' do
       subject.endpoint(mock_api_endpoint)
-      subject.endpoint.should == mock_api_endpoint
+      expect(subject.endpoint).to eq(mock_api_endpoint)
     end
   end
 end
