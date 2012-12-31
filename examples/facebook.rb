@@ -1,7 +1,7 @@
 require_relative '../lib/saran'
 
 class Facebook
-  include Wrappable
+  include Saran
 
   endpoint 'https://graph.facebook.com'
   provider :facebook

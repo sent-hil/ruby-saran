@@ -1,7 +1,7 @@
 require_relative '../lib/saran'
 
 class GoogleCalendar
-  include Wrappable
+  include Saran
 
   endpoint 'https://www.googleapis.com/calendar/v3'
   provider :google
