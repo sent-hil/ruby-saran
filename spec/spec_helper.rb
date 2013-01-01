@@ -7,10 +7,6 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-def mock_access_token
-  1
-end
-
 def mock_api_endpoint
-  'http://localhost:9393'
+  'http://localhost:9393/restful'
 end
