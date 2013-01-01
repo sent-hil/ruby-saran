@@ -4,18 +4,32 @@ class Restful
   include Saran
 
   endpoint 'http://localhost:3000/restful'
-  provider :default
 
-  resources :resources do
+  resources :blogs do
     collection do
-      get '/resources'
-      post '/resources'
+      get '/blogs'
+      post '/blogs'
     end
 
     member do
-      get '/resources/:id'
-      put '/resources/:id'
-      delete '/resources/:id'
+      get '/blogs/:id'
+      put '/blogs/:id'
+      delete '/blogs/:id'
     end
   end
 end
+
+# collection
+Restful::Blogs.new.post(:name => 'indiana')
+blogs = Restful::Blogs.new
+blogs.get
+
+# member
+blog = blogs.first
+blog.get
+blog.put(:name => 'jones')
+blog.delete
+
+blog = Restful::Blog.new(:id => '101')
+blog.get
+blog.put(:name => 'indy')
