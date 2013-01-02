@@ -3,9 +3,12 @@ module Saran
     attr_reader :verb, :path, :provider, :endpoint,
       :access_token
 
-    def initialize(verb, path)
+    def initialize(verb, path, config)
       @verb = verb
       @path = path
+      @provider = config.provider || :default
+      @endpoint = config.endpoint
+      @access_token = config.access_token
     end
 
     def fetch
@@ -15,10 +18,6 @@ module Saran
     private
 
     def client
-      provider     = self.provider     || :default
-      endpoint     = self.endpoint     || nil
-      access_token = self.access_token || nil
-
       config = OpenAuth2::Config.new do |c|
         c.provider     = provider
         c.endpoint     = endpoint
