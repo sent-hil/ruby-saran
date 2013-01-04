@@ -1,6 +1,7 @@
 # Saran
 
-DSL for wrapping RESTful apis.
+DSL for wrapping RESTful apis. This is a rewritten version of
+[wrappable](https://github.com/sent-hil/wrappable).
 
 ## Config
 
