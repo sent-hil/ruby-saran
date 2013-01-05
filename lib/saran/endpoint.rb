@@ -1,32 +1,32 @@
 module Saran
-  class Endpoint
-    attr_reader :verb, :path, :provider, :endpoint,
-      :access_token
 
-    def initialize(verb, path, config)
+  # Make http requests.
+  class Endpoint
+    attr_reader :verb, :url
+
+    # Accepts:
+    #   verb - Symbol, http verb
+    #   url - String, full url to make request
+    #
+    # Examples:
+    #   Endpoint.new(:get, 'http://graph.facebook.com/me/feed')
+    #   Endpoint.new(:post,
+    #     'http://graph.facebook.com/me/feed?message=Hi&access_token=..')
+    #
+    def initialize(verb, url)
       @verb = verb
-      @path = path
-      @provider = config.provider || :default
-      @endpoint = config.endpoint
-      @access_token = config.access_token
+      @url = url
     end
 
+    # Make request.
     def fetch
-      client.send(verb, :path => path)
+      client.send(verb, :path => url)
     end
 
     private
 
     def client
-      config = OpenAuth2::Config.new do |c|
-        c.provider     = provider
-        c.endpoint     = endpoint
-        c.access_token = access_token
-      end
-
-      OpenAuth2::Client.new do |c|
-        c.config = config
-      end
+      OpenAuth2::Client.new
     end
   end
 end
