@@ -19,8 +19,8 @@ module Saran
     end
 
     # Make request.
-    def fetch
-      client.send(verb, :path => url)
+    def fetch(params={})
+      client.send(verb, url, params)
     end
 
     private
