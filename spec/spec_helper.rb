@@ -1,6 +1,7 @@
 require 'pry'
 require 'vcr'
 require 'saran'
+require 'json'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:9393/restful/blogs
+    uri: http://localhost:9393/restful/blogs?limit=1
     body:
       encoding: US-ASCII
       string: ''
@@ -27,14 +27,14 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '46'
+      - '10'
       Connection:
       - keep-alive
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: US-ASCII
-      string: ! '[{"id":0},{"id":1},{"id":2},{"id":3},{"id":4}]'
+      string: ! '[{"id":0}]'
     http_version: 
   recorded_at: Sun, 06 Jan 2013 05:05:24 GMT
 recorded_with: VCR 2.3.0
