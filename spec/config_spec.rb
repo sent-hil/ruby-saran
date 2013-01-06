@@ -10,15 +10,12 @@ describe Saran, 'config' do
     end
   end
 
-  it 'gets endpoint' do
+  it 'defines getters' do
     expect(subject.endpoint).to eq(mock_api_endpoint)
+    expect(subject.access_token).to eq(nil)
   end
 
-  it 'gets default config' do
-    expect(subject.post_type).to eq(:path)
-  end
-
-  it 'sets endpoint' do
+  it 'defines setters' do
     subject.endpoint(mock_api_endpoint)
     expect(subject.endpoint).to eq(mock_api_endpoint)
   end

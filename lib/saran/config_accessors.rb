@@ -1,10 +1,9 @@
 module Saran
   module ConfigAccessors
-    # Private: Creates accessors out of config keys &
-    # sets default values.
+    # Private: Creates accessors out of config keys
     #
     # Accepts:
-    #   configs - Array of symbols, Hash as last argument.
+    #   configs - Array of symbols.
     #
     # Example:
     #   define_config :endpoint
@@ -15,13 +14,7 @@ module Saran
     #     @endpoint
     #   end
     #
-    #  # can also set default values for config
-    #  define_config :endpoint, :post_type => 'google'
-    #
     def self.define_config(*configs)
-      defaults = configs.last.is_a?(Hash) ? configs.pop : {}
-      configs += defaults.keys
-
       configs.each do |config|
         instance_eval do
           define_method(config) do |value=nil|
@@ -29,13 +22,12 @@ module Saran
               instance_variable_set("@#{config}", value)
             end
 
-            instance_variable_get("@#{config}") || defaults[config]
+            instance_variable_get("@#{config}")
           end
         end
       end
     end
 
-    define_config :endpoint, :access_token, :provider,
-                  :post_type => :path
+    define_config :endpoint, :access_token
   end
 end
