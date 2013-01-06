@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sent-hil/open_auth2.git
-  revision: e0750177a0a684a4a37cd62e97248a5f1b4117a1
+  revision: 204160d89338ce7065f365f277cfc3ad1d02e24f
   specs:
     open_auth2 (0.10.0)
       activesupport (~> 3.1)
