@@ -5,9 +5,11 @@ require 'active_support/inflector'
 
 require_relative 'saran/config_accessors'
 require_relative 'saran/endpoint'
+require_relative 'saran/dsl'
 
 module Saran
   def self.included(klass)
     klass.extend(ConfigAccessors)
+    klass.extend(Dsl)
   end
 end
