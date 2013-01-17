@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:9393/restful/blogs?access_token
+    uri: http://localhost:9393/restful/blogs
     body:
       encoding: UTF-8
       string: ! '{"name":"Saran"}'

@@ -30,7 +30,7 @@ describe Saran::Endpoint, '#fetch' do
   it 'makes POST request with json params' do
     VCR.use_cassette('post_blogs_collection_2') do
       resp = described_class.new(:post, url).fetch({
-        :content_type => 'application/json',
+        :headers => {'Content-Type' => 'application/json'},
         :body => JSON.dump({:name => 'Saran'})})
       expect(resp.status).to eq(200)
     end
