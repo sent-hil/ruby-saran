@@ -1,5 +1,4 @@
 module Saran
-
   # Make http requests.
   class Endpoint
     attr_reader :verb, :url
@@ -11,7 +10,6 @@ module Saran
     # Examples:
     #   Endpoint.new(:get,
     #     'https://graph.facebook.com/me/feed')
-    #
     def initialize(verb, url)
       @verb = verb
       @url = url
@@ -30,7 +28,6 @@ module Saran
     #   ep = Endpoint.new(:post,
     #     'http://localhost:9393/restful/blogs')
     #   ep.fetch(:body => {'name' => 'Introducing Saran'})
-    #
     def fetch(params={})
       client.send(verb, url, params)
     end

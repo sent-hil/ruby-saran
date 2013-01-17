@@ -1,6 +1,5 @@
 module Saran
   module Dsl
-
     # Holds a RESTful resource collection & member objects.
     class Resource
       attr_reader :endpoint
@@ -52,7 +51,6 @@ module Saran
 
     # Instantiates Resource, saves it under scope &
     # calls blk in that context.
-    #
     def resources(name, &blk)
       with_scope(:resource, blk) do
         Resource.new(name, endpoint)
@@ -61,7 +59,6 @@ module Saran
 
     # Instantiates Collection, saves it under scope &
     # calls blk in that context.
-    #
     def collection(&blk)
       with_res_scope(Collection, blk) do |klass|
         self.const_set(@resource.collection_name, klass)
@@ -70,7 +67,6 @@ module Saran
 
     # Instantiates Member, saves it under scope & calls
     # blk in that context.
-    #
     def member(&blk)
       with_res_scope(Member, blk) do |klass|
         self.const_set(@resource.member_name, klass)

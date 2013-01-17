@@ -13,7 +13,6 @@ module Saran
     #     @endpoint = arg if arg
     #     @endpoint
     #   end
-    #
     def self.define_config(*configs)
       configs.each do |config|
         instance_eval do
