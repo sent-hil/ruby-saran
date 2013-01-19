@@ -1,18 +1,20 @@
 module Saran
   # Make http requests.
   class Endpoint
-    attr_reader :verb, :url
+    attr_reader :verb, :url, :client
 
     # Accepts:
     #   verb - Symbol, http verb i.e. :get, :post etc.
     #   url - String, full url to make request
+    #   client - optional, Client to make request
     #
     # Examples:
     #   Endpoint.new(:get,
     #     'https://graph.facebook.com/me/feed')
-    def initialize(verb, url)
+    def initialize(verb, url, client=nil)
       @verb = verb
       @url = url
+      @client = client || OpenAuth2::Client.new
     end
 
     # Make request.
@@ -30,12 +32,6 @@ module Saran
     #   ep.fetch(:body => {'name' => 'Introducing Saran'})
     def fetch(params={})
       client.send(verb, url, params)
-    end
-
-    private
-
-    def client
-      OpenAuth2::Client.new
     end
   end
 end

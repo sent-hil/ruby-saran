@@ -75,7 +75,8 @@ module Saran
 
     # Creates Endpoint that saves it under current scope.
     def get(path)
-      @scope.routes << Endpoint.new(:get, endpoint+path)
+      url = endpoint+path
+      @scope.routes << Endpoint.new(:get, url, client)
     end
 
     private
