@@ -17,7 +17,7 @@ describe Saran, 'config' do
   end
 
   it 'defines getters with blocks' do
-    expect(subject.client.call).to eq(1)
+    expect(subject.client).to eq(1)
   end
 
   it 'defines setters' do

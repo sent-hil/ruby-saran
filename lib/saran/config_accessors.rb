@@ -17,8 +17,10 @@ module Saran
     def self.define_config(*configs)
       configs.each do |config|
         instance_eval do
-          define_method(config) do |value=nil, &blk|
-            if val = value || blk
+          define_method(config) do |arg=nil, &blk|
+            val = blk ? blk.call : arg
+
+            if val
               instance_variable_set("@#{config}", val)
             end
 
