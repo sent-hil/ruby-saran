@@ -9,8 +9,9 @@ module Saran
     #   define_config :endpoint
     #
     #   # This generates:
-    #   def endpoint(arg=nil)
-    #     @endpoint = arg if arg
+    #   def endpoint(arg=nil, &blk)
+    #     val = arg || blk
+    #     @endpoint = val if val
     #     @endpoint
     #   end
     def self.define_config(*configs)
