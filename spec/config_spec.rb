@@ -21,7 +21,7 @@ describe Saran, 'config' do
   end
 
   it 'defines setters' do
-    subject.endpoint(mock_api_endpoint)
-    expect(subject.endpoint).to eq(mock_api_endpoint)
+    subject.endpoint(1)
+    expect(subject.endpoint).to eq(1)
   end
 end
