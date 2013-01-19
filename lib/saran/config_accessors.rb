@@ -16,9 +16,9 @@ module Saran
     def self.define_config(*configs)
       configs.each do |config|
         instance_eval do
-          define_method(config) do |value=nil|
-            if value
-              instance_variable_set("@#{config}", value)
+          define_method(config) do |value=nil, &blk|
+            if val = value || blk
+              instance_variable_set("@#{config}", val)
             end
 
             instance_variable_get("@#{config}")
@@ -27,6 +27,6 @@ module Saran
       end
     end
 
-    define_config :endpoint, :access_token
+    define_config :endpoint, :access_token, :client
   end
 end
